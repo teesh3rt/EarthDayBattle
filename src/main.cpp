@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <format>
+#include <fmt/format.h>
 
 #ifndef GIT_HASH
 #define GIT_HASH "UNKNOWN"
@@ -7,7 +7,7 @@
 
 int main()
 {
-    std::string windowTitle = std::format("EarthDayBattle ({})", GIT_HASH);
+    std::string windowTitle = fmt::format("EarthDayBattle ({})", GIT_HASH);
     sf::RenderWindow window(sf::VideoMode({800, 600}), windowTitle);
 
     while (window.isOpen())

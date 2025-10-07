@@ -1,7 +1,5 @@
 {
     "files.associations": {
-        "*.dbclient-js": "javascript",
-        "*.tidal": "haskell",
         "algorithm": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -79,7 +77,18 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "any": "cpp",
+        "cfenv": "cpp",
+        "complex": "cpp",
+        "coroutine": "cpp",
+        "expected": "cpp",
+        "numeric": "cpp",
+        "ranges": "cpp",
+        "source_location": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "typeindex": "cpp"
     },
-    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cppStandard": "c++17",
 }
