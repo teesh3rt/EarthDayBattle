@@ -1,9 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <fmt/format.h>
-
-#ifndef GIT_HASH
-#define GIT_HASH "UNKNOWN"
-#endif // GIT_HASH
+#include "buildtime.hpp"
 
 int main()
 {
