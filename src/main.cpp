@@ -1,21 +1,13 @@
-#include <SFML/Graphics.hpp>
 #include <fmt/format.h>
+#include <spdlog/spdlog.h>
+#include "engine/engine.hpp"
 #include "buildtime.hpp"
 
 int main()
 {
+    spdlog::set_level(spdlog::level::debug);
     std::string windowTitle = fmt::format("EarthDayBattle ({})", GIT_HASH);
-    sf::RenderWindow window(sf::VideoMode({800, 600}), windowTitle);
 
-    while (window.isOpen())
-    {
-        while (const std::optional event = window.pollEvent())
-        {
-            if (event->is<sf::Event::Closed>())
-                window.close();
-        }
-
-        window.clear();
-        window.display();
-    }
+    Engine engine(800, 600, windowTitle);
+    engine.run();
 }

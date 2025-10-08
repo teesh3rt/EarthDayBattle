@@ -4,14 +4,22 @@ set(CMAKE_CXX_STANDARD 17)
 project(EarthDayBattle)
 
 include(./cmake/git.cmake)
-include(./cmake/fmtlib.cmake)
+include(./cmake/spdlog.cmake)
 include(./cmake/sfml.cmake)
 
 set(EXECUTABLE_NAME ${CMAKE_PROJECT_NAME})
 
+set(ENGINE_SRC
+    ./src/engine/engine.cpp
+    ./src/engine/scene.cpp
+    ./src/engine/scene_manager.cpp)
+set(GAME_SRC
+    ./src/main.cpp)
+set(SRC ${ENGINE_SRC} ${GAME_SRC})
+
 add_executable(
     ${EXECUTABLE_NAME}
-    ./src/main.cpp
+    ${SRC}
 )
 
 target_link_libraries(
@@ -20,7 +28,8 @@ target_link_libraries(
     sfml-graphics
     sfml-window
     sfml-system
-    fmt
+    spdlog
+    fmt # comes from spdlog
 )
 
 target_compile_definitions(
