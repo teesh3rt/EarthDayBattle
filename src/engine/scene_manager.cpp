@@ -9,8 +9,8 @@ SceneManager::SceneManager() : current()
 }
 
 SceneManager::SceneManager(Scene starter)
+    : current(starter)
 {
-    current = starter;
 }
 
 Scene SceneManager::get_current_scene()

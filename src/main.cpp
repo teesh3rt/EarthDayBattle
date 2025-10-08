@@ -5,7 +5,7 @@
 
 int main()
 {
-    spdlog::set_level(spdlog::level::debug);
+    spdlog::set_level(spdlog::level::trace);
     std::string windowTitle = fmt::format("EarthDayBattle ({})", GIT_HASH);
 
     Engine engine(800, 600, windowTitle);
