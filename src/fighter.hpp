@@ -18,6 +18,7 @@ class Fighter
 {
 public:
     int health;
+    int magic;
     std::string name;
 
     // I know it's odd to think of items as actions, but think about it...
@@ -34,8 +35,13 @@ public:
     int deal(int amount);
     int heal(int amount);
 
+    int restore_mp(int amount);
+    int deplete_mp(int amount);
+
     // These methods are virtually identical, just
     // using a different array
     void use_item(int index);
     void use_ability(int index);
+
+    void use_ability_on(Fighter &other, int index);
 };

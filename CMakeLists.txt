@@ -19,6 +19,8 @@ set(GAME_SRC
     src/main.cpp
     src/fighter.cpp
     src/action.cpp
+    src/fight_scene.cpp
+    src/game_context.cpp
 )
 set(SRC ${ENGINE_SRC} ${GAME_SRC})
 
@@ -29,6 +31,7 @@ target_link_libraries(${PROJECT_NAME}
         sfml-graphics
         sfml-window
         sfml-system
+        sfml-audio
         spdlog::spdlog
 )
 

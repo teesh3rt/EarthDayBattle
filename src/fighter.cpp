@@ -5,7 +5,8 @@ Fighter::Fighter(int health, std::string name)
     : health(health),
       name(name),
       abilities({}),
-      items({})
+      items({}),
+      magic(100)
 {
 }
 
@@ -13,7 +14,8 @@ Fighter::Fighter(int health, std::string name, std::vector<Action> abilities)
     : health(health),
       name(name),
       abilities(abilities),
-      items({})
+      items({}),
+      magic(100)
 {
 }
 
@@ -21,7 +23,8 @@ Fighter::Fighter(int health, std::string name, std::vector<Action> abilities, st
     : health(health),
       name(name),
       abilities(abilities),
-      items(items)
+      items(items),
+      magic(100)
 {
 }
 
@@ -47,4 +50,22 @@ void Fighter::use_ability(int idx)
 {
     if (idx >= 0 && idx < static_cast<int>(abilities.size()))
         abilities[idx].affect(*this);
+}
+
+void Fighter::use_ability_on(Fighter &other, int idx)
+{
+    if (idx >= 0 && idx < static_cast<int>(abilities.size()))
+        abilities[idx].affect(other);
+}
+
+int Fighter::restore_mp(int amount)
+{
+    magic += amount;
+    return magic;
+}
+
+int Fighter::deplete_mp(int amount)
+{
+    magic -= amount;
+    return magic;
 }

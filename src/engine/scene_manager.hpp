@@ -12,4 +12,7 @@ public:
 
     void set_scene(Scene scene);
     Scene get_current_scene();
+
+    void update(float dt);
+    void draw(sf::RenderWindow &window);
 };

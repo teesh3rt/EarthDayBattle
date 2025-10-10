@@ -6,6 +6,6 @@ class Scene
 public:
     Scene();
 
-    void draw(sf::RenderWindow target);
+    void draw(sf::RenderWindow &target);
     void update(float dt);
 };

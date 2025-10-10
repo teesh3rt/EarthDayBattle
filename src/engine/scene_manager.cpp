@@ -3,9 +3,6 @@
 
 SceneManager::SceneManager() : current()
 {
-    spdlog::debug("Created a SceneManager with the default scene!");
-    spdlog::debug("    This is probably not something you want to do.");
-    spdlog::debug("    Please check about perhaps adding a starter scene.");
 }
 
 SceneManager::SceneManager(Scene starter)
@@ -21,4 +18,14 @@ Scene SceneManager::get_current_scene()
 void SceneManager::set_scene(Scene scene)
 {
     current = scene;
+}
+
+void SceneManager::draw(sf::RenderWindow &window)
+{
+    current.draw(window);
+}
+
+void SceneManager::update(float dt)
+{
+    current.update(dt);
 }
