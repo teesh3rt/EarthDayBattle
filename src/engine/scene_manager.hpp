@@ -1,18 +1,16 @@
 #pragma once
 #include "scene.hpp"
+#include <memory>
 
 class SceneManager
 {
 private:
-    Scene current;
+    std::unique_ptr<Scene> current;
 
 public:
     SceneManager();
-    SceneManager(Scene starter);
+    SceneManager(std::unique_ptr<Scene> starter);
 
-    void set_scene(Scene scene);
-    Scene get_current_scene();
-
-    void update(float dt);
-    void draw(sf::RenderWindow &window);
+    void set_scene(std::unique_ptr<Scene> scene);
+    Scene &get_current_scene();
 };

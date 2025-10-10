@@ -5,7 +5,8 @@ class Scene
 {
 public:
     Scene();
+    virtual ~Scene() = default;
 
-    void draw(sf::RenderWindow &target);
-    void update(float dt);
+    virtual void draw(sf::RenderWindow &target) = 0;
+    virtual void update(float dt) = 0;
 };

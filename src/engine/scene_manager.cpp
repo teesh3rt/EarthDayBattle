@@ -1,31 +1,29 @@
 #include "scene_manager.hpp"
 #include <spdlog/spdlog.h>
 
-SceneManager::SceneManager() : current()
+SceneManager::SceneManager() : current(nullptr)
 {
+    spdlog::trace("SceneManager created with no initial scene.");
 }
 
-SceneManager::SceneManager(Scene starter)
-    : current(starter)
+SceneManager::SceneManager(std::unique_ptr<Scene> starter)
+    : current(std::move(starter))
 {
+    spdlog::trace("SceneManager created with initial scene.");
 }
 
-Scene SceneManager::get_current_scene()
+void SceneManager::set_scene(std::unique_ptr<Scene> scene)
 {
-    return current;
+    spdlog::debug("Switching scene...");
+    current = std::move(scene);
 }
 
-void SceneManager::set_scene(Scene scene)
+Scene &SceneManager::get_current_scene()
 {
-    current = scene;
-}
-
-void SceneManager::draw(sf::RenderWindow &window)
-{
-    current.draw(window);
-}
-
-void SceneManager::update(float dt)
-{
-    current.update(dt);
+    if (!current)
+    {
+        spdlog::error("No scene set! Returning reference to null object (this will crash).");
+        throw std::runtime_error("No scene set in SceneManager.");
+    }
+    return *current;
 }

@@ -42,14 +42,14 @@ void Engine::run()
 
 void Engine::update(float deltaTime)
 {
-    scene_manager.update(deltaTime);
+    scene_manager.get_current_scene().update(deltaTime);
 }
 
 void Engine::draw()
 {
     window.clear(sf::Color::Black);
 
-    scene_manager.draw(window);
+    scene_manager.get_current_scene().draw(window);
 
     window.display();
 }

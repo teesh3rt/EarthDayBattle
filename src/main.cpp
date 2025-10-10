@@ -9,8 +9,7 @@ int main()
     spdlog::set_level(spdlog::level::trace);
     std::string windowTitle = fmt::format("EarthDayBattle ({})", GIT_HASH);
 
-    Engine engine(800, 600, windowTitle);
-    FightScene scene;
-    engine.scene_manager.set_scene(scene);
+    Engine engine(1920, 1080, windowTitle);
+    engine.scene_manager.set_scene(std::make_unique<FightScene>());
     engine.run();
 }
