@@ -21,6 +21,7 @@ set(GAME_SRC
     src/action.cpp
     src/fight_scene.cpp
     src/game_context.cpp
+    src/asset_store.cpp
 )
 set(SRC ${ENGINE_SRC} ${GAME_SRC})
 

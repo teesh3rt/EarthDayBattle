@@ -1,14 +1,14 @@
 #pragma once
 #include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
 #include "engine/scene.hpp"
 #include "game_context.hpp"
+#include "asset_store.hpp"
 
 class FightScene : public Scene
 {
 private:
-    sf::Music music;
-    sf::Texture japanbg_tex;
+    AssetStore assets;
+    sf::Music battle_music;
 
 public:
     GameContext context;
