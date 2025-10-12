@@ -32,6 +32,11 @@ void Engine::run()
                 spdlog::debug("    Making sure destructuring happens...");
                 window.close();
             }
+
+            if (const auto *keyPressed = event->getIf<sf::Event::KeyPressed>())
+            {
+                scene_manager.get_current_scene().on_key_pressed(keyPressed->scancode);
+            }
         }
 
         update(deltaTime);

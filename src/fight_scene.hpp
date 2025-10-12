@@ -5,12 +5,18 @@
 #include "asset_store.hpp"
 #include "ui/hselectbox.hpp"
 
+enum InteractWith
+{
+    ACTION_OPTION,
+};
+
 class FightScene : public Scene
 {
 private:
     AssetStore assets;
     sf::Music battle_music;
     HSelectBox action_option;
+    InteractWith interact_with;
 
 public:
     GameContext context;
@@ -18,4 +24,5 @@ public:
     FightScene();
     void draw(sf::RenderWindow &target) override;
     void update(float dt) override;
+    void on_key_pressed(sf::Keyboard::Scancode code) override;
 };
