@@ -4,10 +4,13 @@
 #include "game_context.hpp"
 #include "asset_store.hpp"
 #include "ui/hselectbox.hpp"
+#include "ui/vselectbox.hpp"
 
 enum InteractWith
 {
     ACTION_OPTION,
+    ABILITY_OPTION,
+    ITEM_OPTION,
 };
 
 class FightScene : public Scene
@@ -15,7 +18,11 @@ class FightScene : public Scene
 private:
     AssetStore assets;
     sf::Music battle_music;
+
     HSelectBox action_option;
+    VSelectBox ability_option;
+    VSelectBox item_option;
+
     InteractWith interact_with;
 
 public:
