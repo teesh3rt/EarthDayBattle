@@ -92,3 +92,8 @@ void VSelectBox::draw(sf::RenderWindow &window)
         y_offset += option.getLocalBounds().size.y + 50.f;
     }
 }
+
+void VSelectBox::set_options(std::vector<std::string> opts) {
+    options = opts;
+    index = 0;
+}

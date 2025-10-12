@@ -7,10 +7,13 @@ FightScene::FightScene()
       assets(),
       battle_music("./assets/music/battle.ogg"),
       action_option({"Fight", "Ability", "Item"}),
-      ability_option({"Recovery", "Throw Out", "Sword Attack"}),
-      item_option({"Hamburger", "Coca-Cola"}),
+      ability_option({}),
+      item_option({}),
       interact_with(InteractWith::ACTION_OPTION)
 {
+    item_option.set_options({"Hamburger", "Coca-Cola"});
+    ability_option.set_options({"Recovery", "Throw Out", "Sword Attack"});
+
     ability_option.set_position({0, 100});
     item_option.set_position({0, 100});
 }

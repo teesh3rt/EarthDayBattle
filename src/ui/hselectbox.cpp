@@ -77,3 +77,9 @@ void HSelectBox::draw(sf::RenderWindow &window)
         x_offset += option.getLocalBounds().size.x + 50.f;
     }
 }
+
+void HSelectBox::set_options(std::vector<std::string> opts)
+{
+    options = opts;
+    index = 0;
+}

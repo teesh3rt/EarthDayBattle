@@ -23,6 +23,8 @@ public:
 
     std::string get_current_selection();
 
+    void set_options(std::vector<std::string> opts);
+
     void draw(sf::RenderWindow &window);
     void go_left();
     void go_right();
