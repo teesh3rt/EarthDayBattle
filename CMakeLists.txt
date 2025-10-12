@@ -15,6 +15,9 @@ set(ENGINE_SRC
     src/engine/scene.cpp
     src/engine/scene_manager.cpp
 )
+set(UI_SRC
+    src/ui/hselectbox.cpp
+)
 set(GAME_SRC
     src/main.cpp
     src/fighter.cpp
@@ -23,7 +26,7 @@ set(GAME_SRC
     src/game_context.cpp
     src/asset_store.cpp
 )
-set(SRC ${ENGINE_SRC} ${GAME_SRC})
+set(SRC ${ENGINE_SRC} ${UI_SRC} ${GAME_SRC})
 
 add_executable(${PROJECT_NAME} ${SRC})
 
@@ -33,7 +36,7 @@ target_link_libraries(${PROJECT_NAME}
         sfml-window
         sfml-system
         sfml-audio
-        spdlog::spdlog
+        spdlog
 )
 
 target_compile_definitions(${PROJECT_NAME}

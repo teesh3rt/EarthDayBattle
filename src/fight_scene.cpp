@@ -4,7 +4,8 @@
 FightScene::FightScene()
     : context(),
       assets(),
-      battle_music("./assets/music/battle.ogg")
+      battle_music("./assets/music/battle.ogg"),
+      action_option({"Fight", "Ability", "Item"})
 {
 }
 
@@ -22,6 +23,8 @@ void FightScene::draw(sf::RenderWindow &target)
     monster.setPosition({1920 - static_cast<float>(assets.monster.getSize().x) - 50,
                          550 - static_cast<float>(assets.monster.getSize().x) / 2});
     target.draw(monster);
+
+    action_option.draw(target);
 }
 
 void FightScene::update(float dt)
