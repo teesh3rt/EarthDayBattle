@@ -50,7 +50,7 @@ void HSelectBox::go_right()
 void HSelectBox::draw(sf::RenderWindow &window)
 {
     sf::RectangleShape rect({static_cast<float>(window.getSize().x), 100});
-    rect.setOutlineThickness(10.f);
+    rect.setOutlineThickness(5.f);
     rect.setOutlineColor(sf::Color(38, 104, 171));
     rect.setFillColor(sf::Color(52, 143, 235));
     rect.setPosition(position);

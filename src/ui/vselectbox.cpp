@@ -47,17 +47,32 @@ void VSelectBox::go_down()
     }
 }
 
+// This function is so fucking janky... too bad!
 void VSelectBox::draw(sf::RenderWindow &window)
 {
-    sf::RectangleShape rect({350, static_cast<float>(window.getSize().y)});
-    rect.setOutlineThickness(10.f);
+    sf::RectangleShape rect({0, 0});
+    rect.setOutlineThickness(5.f);
     rect.setOutlineColor(sf::Color(38, 104, 171));
     rect.setFillColor(sf::Color(52, 143, 235));
     rect.setPosition(position);
-    window.draw(rect);
 
     sf::Font font("./assets/fonts/osrs.ttf");
     float y_offset = 50.f;
+    for (int option_index = 0; option_index < options.size(); option_index++)
+    {
+        sf::Text option(font);
+        option.setString(options[option_index]);
+        option.setCharacterSize(40);
+        option.setStyle(sf::Text::Bold);
+
+        window.draw(option);
+
+        y_offset += option.getLocalBounds().size.y + 50.f;
+    }
+    rect.setSize({350, y_offset + 50});
+    window.draw(rect);
+
+    y_offset = 50.f;
 
     for (int option_index = 0; option_index < options.size(); option_index++)
     {

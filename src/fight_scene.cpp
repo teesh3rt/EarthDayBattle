@@ -8,7 +8,7 @@ FightScene::FightScene()
       battle_music("./assets/music/battle.ogg"),
       action_option({"Fight", "Ability", "Item"}),
       ability_option({"Recovery", "Throw Out", "Sword Attack"}),
-      item_option({"Sandwich", "Coca-Cola"}),
+      item_option({"Hamburger", "Coca-Cola"}),
       interact_with(InteractWith::ACTION_OPTION)
 {
     ability_option.set_position({0, 100});
@@ -22,12 +22,12 @@ void FightScene::draw(sf::RenderWindow &target)
 
     sf::Sprite michael(assets.michael);
     michael.setScale({-1.f, 1.f});
-    michael.setPosition({300, 540 - static_cast<float>(assets.michael.getSize().x) / 2});
+    michael.setPosition({300, 650});
     target.draw(michael);
 
     sf::Sprite monster(assets.monster);
     monster.setPosition({1920 - static_cast<float>(assets.monster.getSize().x) - 50,
-                         550 - static_cast<float>(assets.monster.getSize().x) / 2});
+                         500});
     target.draw(monster);
 
     if (interact_with == InteractWith::ABILITY_OPTION)
