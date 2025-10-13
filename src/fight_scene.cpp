@@ -13,8 +13,17 @@ FightScene::FightScene()
       michael_fighterbox(context.michael),
       monster_fighterbox(context.monster)
 {
-    item_option.set_options({"Hamburger", "Coca-Cola"});
-    ability_option.set_options({"Recovery", "Throw Out", "Sword Attack"});
+    item_option.set_options({});
+    for (int i = 0; i < context.michael.items.size(); i++)
+    {
+        item_option.add_option(context.michael.items[i]->name);
+    }
+
+    ability_option.set_options({});
+    for (int i = 0; i < context.michael.abilities.size(); i++)
+    {
+        ability_option.add_option(context.michael.abilities[i]->name);
+    }
 
     ability_option.set_position({0, 100});
     item_option.set_position({0, 100});
@@ -90,7 +99,7 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
         }
     }
 
-    if (interact_with == InteractWith::ABILITY_OPTION)
+    else if (interact_with == InteractWith::ABILITY_OPTION)
     {
         if (code == sf::Keyboard::Scancode::Up)
         {
@@ -108,7 +117,7 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
         }
     }
 
-    if (interact_with == InteractWith::ITEM_OPTION)
+    else if (interact_with == InteractWith::ITEM_OPTION)
     {
         if (code == sf::Keyboard::Scancode::Up)
         {
@@ -122,6 +131,12 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
 
         if (code == sf::Keyboard::Scancode::Escape)
         {
+            interact_with = InteractWith::ACTION_OPTION;
+        }
+
+        if (code == sf::Keyboard::Scancode::Enter)
+        {
+            context.michael.use_item(item_option.index);
             interact_with = InteractWith::ACTION_OPTION;
         }
     }

@@ -83,3 +83,8 @@ void HSelectBox::set_options(std::vector<std::string> opts)
     options = opts;
     index = 0;
 }
+
+void HSelectBox::add_option(std::string value)
+{
+    options.push_back(value);
+}

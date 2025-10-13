@@ -24,6 +24,7 @@ public:
     std::string get_current_selection();
 
     void set_options(std::vector<std::string> opts);
+    void add_option(std::string value);
 
     void draw(sf::RenderWindow &window);
     void go_left();

@@ -27,6 +27,8 @@ set(GAME_SRC
     src/fight_scene.cpp
     src/game_context.cpp
     src/asset_store.cpp
+    src/actions/hamburger.cpp
+    src/actions/cocacola.cpp
 )
 set(SRC ${ENGINE_SRC} ${UI_SRC} ${GAME_SRC})
 

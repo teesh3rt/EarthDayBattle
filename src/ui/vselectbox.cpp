@@ -97,3 +97,7 @@ void VSelectBox::set_options(std::vector<std::string> opts) {
     options = opts;
     index = 0;
 }
+
+void VSelectBox::add_option(std::string value) {
+    options.push_back(value);
+}

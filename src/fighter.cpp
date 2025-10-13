@@ -12,7 +12,7 @@ Fighter::Fighter(int health, std::string name)
 {
 }
 
-Fighter::Fighter(int health, std::string name, std::vector<Action> abilities)
+Fighter::Fighter(int health, std::string name, std::vector<std::shared_ptr<Action>> abilities)
     : health(health),
       max_health(health),
       name(name),
@@ -23,7 +23,7 @@ Fighter::Fighter(int health, std::string name, std::vector<Action> abilities)
 {
 }
 
-Fighter::Fighter(int health, std::string name, std::vector<Action> abilities, std::vector<Action> items)
+Fighter::Fighter(int health, std::string name, std::vector<std::shared_ptr<Action>> abilities, std::vector<std::shared_ptr<Action>> items)
     : health(health),
       max_health(health),
       name(name),
@@ -49,19 +49,19 @@ int Fighter::deal(int amount)
 void Fighter::use_item(int idx)
 {
     if (idx >= 0 && idx < static_cast<int>(items.size()))
-        items[idx].affect(*this);
+        items[idx]->affect(*this);
 }
 
 void Fighter::use_ability(int idx)
 {
     if (idx >= 0 && idx < static_cast<int>(abilities.size()))
-        abilities[idx].affect(*this);
+        abilities[idx]->affect(*this);
 }
 
 void Fighter::use_ability_on(Fighter &other, int idx)
 {
     if (idx >= 0 && idx < static_cast<int>(abilities.size()))
-        abilities[idx].affect(other);
+        abilities[idx]->affect(other);
 }
 
 int Fighter::restore_mp(int amount)

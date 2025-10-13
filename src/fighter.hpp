@@ -27,12 +27,12 @@ public:
     //
     // Items and abilities are really one and the same: things that affect a
     // fighter! DRY code, here we come!
-    std::vector<Action> items;
-    std::vector<Action> abilities;
+    std::vector<std::shared_ptr<Action>> items;
+    std::vector<std::shared_ptr<Action>> abilities;
 
     Fighter(int health, std::string name);
-    Fighter(int health, std::string name, std::vector<Action> abilities);
-    Fighter(int health, std::string name, std::vector<Action> abilities, std::vector<Action> items);
+    Fighter(int health, std::string name, std::vector<std::shared_ptr<Action>> abilities);
+    Fighter(int health, std::string name, std::vector<std::shared_ptr<Action>> abilities, std::vector<std::shared_ptr<Action>> items);
 
     int deal(int amount);
     int heal(int amount);

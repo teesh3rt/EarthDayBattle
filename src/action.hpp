@@ -15,6 +15,7 @@ public:
     std::string description;
 
     Action();
+    virtual ~Action() = default;
 
-    void affect(Fighter &affected);
+    virtual void affect(Fighter &affected);
 };
