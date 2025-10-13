@@ -3,7 +3,7 @@
 #include <spdlog/spdlog.h>
 
 Engine::Engine(unsigned int width, unsigned int height, std::string title)
-    : window(sf::VideoMode({width, height}), title),
+    : window(sf::VideoMode({width, height}), title, sf::Style::Titlebar | sf::Style::Close),
       previousTime(0.f),
       deltaTime(0.f),
       scene_manager()

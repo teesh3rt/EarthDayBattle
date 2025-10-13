@@ -18,6 +18,7 @@ set(ENGINE_SRC
 set(UI_SRC
     src/ui/hselectbox.cpp
     src/ui/vselectbox.cpp
+    src/ui/fighterbox.cpp
 )
 set(GAME_SRC
     src/main.cpp

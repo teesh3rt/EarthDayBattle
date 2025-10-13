@@ -18,7 +18,9 @@ class Fighter
 {
 public:
     int health;
+    int max_health;
     int magic;
+    int max_magic;
     std::string name;
 
     // I know it's odd to think of items as actions, but think about it...

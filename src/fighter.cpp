@@ -3,28 +3,34 @@
 
 Fighter::Fighter(int health, std::string name)
     : health(health),
+      max_health(health),
       name(name),
       abilities({}),
       items({}),
-      magic(100)
+      magic(100),
+      max_magic(100)
 {
 }
 
 Fighter::Fighter(int health, std::string name, std::vector<Action> abilities)
     : health(health),
+      max_health(health),
       name(name),
       abilities(abilities),
       items({}),
-      magic(100)
+      magic(100),
+      max_magic(100)
 {
 }
 
 Fighter::Fighter(int health, std::string name, std::vector<Action> abilities, std::vector<Action> items)
     : health(health),
+      max_health(health),
       name(name),
       abilities(abilities),
       items(items),
-      magic(100)
+      magic(100),
+      max_magic(100)
 {
 }
 

@@ -5,6 +5,7 @@
 #include "asset_store.hpp"
 #include "ui/hselectbox.hpp"
 #include "ui/vselectbox.hpp"
+#include "ui/fighterbox.hpp"
 
 enum InteractWith
 {
@@ -24,6 +25,9 @@ private:
     VSelectBox item_option;
 
     InteractWith interact_with;
+
+    FighterBox michael_fighterbox;
+    FighterBox monster_fighterbox;
 
 public:
     GameContext context;
