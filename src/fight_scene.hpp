@@ -19,6 +19,7 @@ class FightScene : public Scene
 private:
     AssetStore assets;
     sf::Music battle_music;
+    sf::Music end_music;
 
     HSelectBox action_option;
     VSelectBox ability_option;
@@ -29,11 +30,17 @@ private:
     FighterBox michael_fighterbox;
     FighterBox monster_fighterbox;
 
+    bool dead;
+    bool win;
+
 public:
     GameContext context;
 
     FightScene();
     void draw(sf::RenderWindow &target) override;
+    void draw_game(sf::RenderWindow &target);
+    void draw_dead(sf::RenderWindow &target);
+    void draw_win(sf::RenderWindow &target);
     void update(float dt) override;
     void on_key_pressed(sf::Keyboard::Scancode code) override;
 };

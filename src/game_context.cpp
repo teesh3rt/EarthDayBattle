@@ -12,7 +12,7 @@
 
 GameContext::GameContext()
     : michael(100, "Michael"),
-      monster(300, "Trash Monster")
+      monster(240, "Trash Monster")
 {
   michael.items.push_back(std::make_shared<Hamburger>());
   michael.items.push_back(std::make_shared<CocaCola>());

@@ -75,6 +75,10 @@ int Fighter::restore_mp(int amount)
 
 int Fighter::deplete_mp(int amount)
 {
+    if (magic - amount <= 0)
+    {
+        magic = 0;
+    }
     magic -= amount;
     return magic;
 }
@@ -82,6 +86,9 @@ int Fighter::deplete_mp(int amount)
 // Use a random ability, used by the monster.
 void Fighter::make_move(Fighter &michael)
 {
+    if (magic <= 0)
+        return;
+
     if (abilities.empty())
     {
         spdlog::warn("{} has no abilities!", name);
@@ -107,4 +114,6 @@ void Fighter::make_move(Fighter &michael)
     {
         use_ability_on(michael, idx);
     }
+
+    deplete_mp(5);
 }

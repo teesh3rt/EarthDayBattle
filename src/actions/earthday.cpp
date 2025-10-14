@@ -12,7 +12,7 @@ EarthDay::EarthDay()
 void EarthDay::affect(Fighter &affected)
 {
     use_count++;
-    if (use_count >= 4)
+    if (use_count >= 3)
     {
         affected.deal(200);
     }

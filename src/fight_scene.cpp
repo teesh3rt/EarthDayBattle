@@ -6,12 +6,15 @@ FightScene::FightScene()
     : context(),
       assets(),
       battle_music("./assets/music/battle.ogg"),
+      end_music("./assets/music/end.ogg"),
       action_option({"Fight", "Ability", "Item"}),
       ability_option({}),
       item_option({}),
       interact_with(InteractWith::ACTION_OPTION),
       michael_fighterbox(context.michael),
-      monster_fighterbox(context.monster)
+      monster_fighterbox(context.monster),
+      dead(false),
+      win(false)
 {
     item_option.set_options({});
     for (int i = 0; i < context.michael.items.size(); i++)
@@ -30,6 +33,60 @@ FightScene::FightScene()
 }
 
 void FightScene::draw(sf::RenderWindow &target)
+{
+    if (dead)
+    {
+        draw_dead(target);
+    }
+    else if (win)
+    {
+        draw_win(target);
+    }
+    else
+    {
+        draw_game(target);
+    }
+}
+
+void FightScene::draw_win(sf::RenderWindow &target)
+{
+    sf::Font font("./assets/fonts/osrs.ttf");
+
+    sf::Text you_died(font);
+    you_died.setString("Michael won!");
+    you_died.setCharacterSize(100);
+    you_died.setPosition({100, 100});
+    you_died.setFillColor(sf::Color::Green);
+    target.draw(you_died);
+
+    sf::Text restart_to_continue(font);
+    restart_to_continue.setString("We have to remember: battling pollution isnt and will never be\nas easy as this. If we as a human race wish to succeed in saving our\nplanet, everyone must take part. You can make a difference, we all can.\nYou are the future, and the future starts with you.\n\nRemember, treat this planet like we have no others, because we have no others.\n\nGame made by [Ilay Levy].\nSprites made by [Michael Rivkin].\nMusic made by [The Block Tales Sound Team].\nFont is [OldSchool RuneScape].\n\nYou may now quit the game.");
+    restart_to_continue.setCharacterSize(50);
+    restart_to_continue.setPosition({100, 250});
+    restart_to_continue.setFillColor(sf::Color::White);
+    target.draw(restart_to_continue);
+}
+
+void FightScene::draw_dead(sf::RenderWindow &target)
+{
+    sf::Font font("./assets/fonts/osrs.ttf");
+
+    sf::Text you_died(font);
+    you_died.setString("Michael died.");
+    you_died.setCharacterSize(100);
+    you_died.setPosition({100, 100});
+    you_died.setFillColor(sf::Color::Red);
+    target.draw(you_died);
+
+    sf::Text restart_to_continue(font);
+    restart_to_continue.setString("Restart the game to continue.");
+    restart_to_continue.setCharacterSize(50);
+    restart_to_continue.setPosition({100, 250});
+    restart_to_continue.setFillColor(sf::Color::White);
+    target.draw(restart_to_continue);
+}
+
+void FightScene::draw_game(sf::RenderWindow &target)
 {
     sf::Sprite japanbg(assets.japanbg);
     target.draw(japanbg);
@@ -65,14 +122,41 @@ void FightScene::draw(sf::RenderWindow &target)
 
 void FightScene::update(float dt)
 {
-    if (battle_music.getStatus() != sf::SoundStream::Status::Playing)
+    if (battle_music.getStatus() != sf::SoundStream::Status::Playing && !dead && !win)
     {
         battle_music.play();
+    }
+
+    if (context.michael.health <= 0 && !dead)
+    {
+        battle_music.stop();
+        end_music.play();
+        dead = true;
+    }
+
+    if (context.monster.health <= 0 && !dead && !win)
+    {
+        battle_music.stop();
+        end_music.play();
+        win = true;
+    }
+
+    if (context.michael.magic <= 0)
+    {
+        context.michael.magic = 0;
+    }
+
+    if (context.monster.magic <= 0)
+    {
+        context.monster.magic = 0;
     }
 }
 
 void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
 {
+    if (dead || win)
+        return;
+
     if (interact_with == InteractWith::ACTION_OPTION)
     {
         if (code == sf::Keyboard::Scancode::Right)
@@ -87,6 +171,13 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
 
         if (code == sf::Keyboard::Scancode::Enter)
         {
+            if (action_option.get_current_selection() == "Fight")
+            {
+                context.monster.deal(20);
+                context.monster.make_move(context.michael);
+                interact_with = InteractWith::ACTION_OPTION;
+            }
+
             if (action_option.get_current_selection() == "Ability")
             {
                 interact_with = InteractWith::ABILITY_OPTION;
@@ -118,6 +209,12 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
 
         if (code == sf::Keyboard::Scancode::Enter)
         {
+            if (context.michael.magic <= 0)
+            {
+                interact_with = InteractWith::ACTION_OPTION;
+                return;
+            }
+
             // The Yellow Bin
             if (ability_option.index == 0)
             {
