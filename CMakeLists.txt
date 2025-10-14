@@ -29,6 +29,10 @@ set(GAME_SRC
     src/asset_store.cpp
     src/actions/hamburger.cpp
     src/actions/cocacola.cpp
+    src/actions/yellowbin.cpp
+    src/actions/backonmyfeet.cpp
+    src/actions/heavyattack.cpp
+    src/actions/earthday.cpp
 )
 set(SRC ${ENGINE_SRC} ${UI_SRC} ${GAME_SRC})
 

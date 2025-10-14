@@ -115,6 +115,36 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
         {
             interact_with = InteractWith::ACTION_OPTION;
         }
+
+        if (code == sf::Keyboard::Scancode::Enter)
+        {
+            // The Yellow Bin
+            if (ability_option.index == 0)
+            {
+                context.michael.use_ability_on(context.monster, 0);
+            }
+
+            // Back on my feet
+            if (ability_option.index == 1)
+            {
+                context.michael.use_ability(1);
+            }
+
+            // Heavy attack
+            if (ability_option.index == 2)
+            {
+                context.michael.use_ability_on(context.monster, 2);
+            }
+
+            // Earth Day
+            if (ability_option.index == 3)
+            {
+                context.michael.use_ability_on(context.monster, 3);
+            }
+
+            context.michael.deplete_mp(20);
+            interact_with = InteractWith::ACTION_OPTION;
+        }
     }
 
     else if (interact_with == InteractWith::ITEM_OPTION)
