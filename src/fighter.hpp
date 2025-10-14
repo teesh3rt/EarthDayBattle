@@ -46,4 +46,6 @@ public:
     void use_ability(int index);
 
     void use_ability_on(Fighter &other, int index);
+
+    void make_move(Fighter &opposing);
 };

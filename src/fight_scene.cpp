@@ -143,6 +143,7 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
             }
 
             context.michael.deplete_mp(20);
+            context.monster.make_move(context.michael);
             interact_with = InteractWith::ACTION_OPTION;
         }
     }
@@ -167,6 +168,7 @@ void FightScene::on_key_pressed(sf::Keyboard::Scancode code)
         if (code == sf::Keyboard::Scancode::Enter)
         {
             context.michael.use_item(item_option.index);
+            context.monster.make_move(context.michael);
             interact_with = InteractWith::ACTION_OPTION;
         }
     }

@@ -6,6 +6,9 @@
 #include "actions/backonmyfeet.hpp"
 #include "actions/heavyattack.hpp"
 #include "actions/earthday.hpp"
+#include "actions/poison.hpp"
+#include "actions/pollute.hpp"
+#include "actions/microplastics.hpp"
 
 GameContext::GameContext()
     : michael(100, "Michael"),
@@ -18,4 +21,8 @@ GameContext::GameContext()
   michael.abilities.push_back(std::make_shared<BackOnMyFeet>());
   michael.abilities.push_back(std::make_shared<HeavyAttack>());
   michael.abilities.push_back(std::make_shared<EarthDay>());
+
+  monster.abilities.push_back(std::make_shared<Poison>());
+  monster.abilities.push_back(std::make_shared<Pollute>());
+  monster.abilities.push_back(std::make_shared<Microplastics>());
 }

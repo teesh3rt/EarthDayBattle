@@ -1,5 +1,8 @@
 #include "fighter.hpp"
 #include <string>
+#include <cstdlib>
+#include <ctime>
+#include <spdlog/spdlog.h>
 
 Fighter::Fighter(int health, std::string name)
     : health(health),
@@ -74,4 +77,34 @@ int Fighter::deplete_mp(int amount)
 {
     magic -= amount;
     return magic;
+}
+
+// Use a random ability, used by the monster.
+void Fighter::make_move(Fighter &michael)
+{
+    if (abilities.empty())
+    {
+        spdlog::warn("{} has no abilities!", name);
+        return;
+    }
+
+    // אתחול מחולל רנדומלי פעם אחת בלבד
+    static bool seeded = false;
+    if (!seeded)
+    {
+        std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        seeded = true;
+    }
+
+    // בחר יכולת אקראית
+    int idx = std::rand() % abilities.size();
+
+    if (idx == 1)
+    {
+        use_ability(1);
+    }
+    else
+    {
+        use_ability_on(michael, idx);
+    }
 }

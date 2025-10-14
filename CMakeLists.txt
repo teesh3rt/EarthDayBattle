@@ -33,6 +33,9 @@ set(GAME_SRC
     src/actions/backonmyfeet.cpp
     src/actions/heavyattack.cpp
     src/actions/earthday.cpp
+    src/actions/microplastics.cpp
+    src/actions/poison.cpp
+    src/actions/pollute.cpp
 )
 set(SRC ${ENGINE_SRC} ${UI_SRC} ${GAME_SRC})
 
