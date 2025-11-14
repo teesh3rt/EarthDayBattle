@@ -4,7 +4,7 @@
 
 YellowBin::YellowBin()
 {
-    name = "The Yellow Bin";
+    name = "The Orange Bin";
     description = "Clean up the trash, 60 HP, 10 MP";
 }
 
