@@ -63,7 +63,7 @@ target_include_directories(${PROJECT_NAME}
 )
 
 if(WIN32)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE PLATFORM_WINDOWS)
+  target_compile_definitions(${PROJECT_NAME} PRIVATE PLATFORM_WINDOWS)
 elseif(UNIX)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE PLATFORM_LINUX)
+  target_compile_definitions(${PROJECT_NAME} PRIVATE PLATFORM_LINUX)
 endif()
